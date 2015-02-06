@@ -1,12 +1,12 @@
 <div class="row">
 
 <%= link_to 'New Project', new_project_path,:class=>"btn btn-primary pull-right" %>
-  <h2>Projects</h2>
+  <h1>Projects</h1>
 </div>      
 <% @projects.each do |project| %>
   <div class="row">
     <div class="module_name"><%= project.title %></div><br>
-    <div  class="module_desc"><%= project.desc %></div>
+    <div  class="module_desc"><%= project.desc.html_safe %></div>
     <br>
     <div class="col-md-4"><p><%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-info" %>
     <%=link_to("Submodules",project_modules_path(project.id),:class=>"btn btn-warning")%> 
