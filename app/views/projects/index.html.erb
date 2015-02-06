@@ -12,11 +12,12 @@
   <div class="row">
     <div class="module_name"><%= project.title %></div><br>
     <div  class="module_desc"><%= project.desc.html_safe %></div>
-    <div id="submodules"></div>
     <br>
-    <%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-info",:remote=>"true" %>    
+    <%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-info",:remote=>"true" %>   
     <%=link_to project.submodules.count.to_s+" User stories",project_modules_path(project.id),:class=>"btn btn-warning",:remote=>"true"%><br><br> 
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"%>
+
+    <div id="submodules"></div>
   </div>
 <% end %>
   <% end %>

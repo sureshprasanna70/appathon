@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get 'comments/new/:id'=>"comments#new",:as=>"new_comment_for_submodule"  
   get 'submodules/bug/:id'=>"submodules#bug",:as=>"bugs_in_submodule"
   get 'bugs/new/:submodule_id'=>"bugs#new",:as=>"new_bug_for_submodule"
+  get 'projects/complete/:id'=>"projects#complete",:as=>"complete_story"
 end

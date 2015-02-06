@@ -26,13 +26,14 @@
       <div class="comment_content"><%=comment.content%></div>
     </div>
 
-      <div id="bugs"></div>
     <br>
   <%end%>
   <br>
   <%=link_to("Edit submodule",edit_submodule_path(submodule),:class=>"btn btn-info",:remote=>true)%>
   <%=link_to(submodule.bugs.count.to_s+" Bugs",bugs_in_submodule_path(submodule.id),:class=>"btn btn-info",:remote=>true)%>
   <%=link_to("New comment",new_comment_for_submodule_path(submodule.id),:class=>"btn btn-success",:remote=>"true")%>
+
+  <div id="bugs"></div>
 </div>
 <br>
 <br>

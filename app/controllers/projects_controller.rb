@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy,:complete]
 
   respond_to :html
 
@@ -37,6 +37,9 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_with(@project)
+  end
+  def complete
+
   end
   def submodules
     @project_id=params[:id]

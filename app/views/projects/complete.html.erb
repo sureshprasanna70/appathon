@@ -1,0 +1,28 @@
+<div class="row">
+  <%=@project.id%>
+  <%=@project.title%>
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="#">Project overview</a></li>
+    <li role="presentation"><a href="#">Stories</a></li>
+    <li role="presentation"><a href="#">Bugs</a></li>
+    <li role="presentation"><a href="#">Team</a></li>
+  </ul>
+</div>
+<div id="overview">
+  <div class="lead">  <%=@project.title%></div>
+  <div class="description"><%=@project.desc.html_safe%></div>
+</div>
+<div id="stories">
+  <b>Stories</b><br>
+  Total stories <%=@project.submodules.count%><br>
+<%@project.submodules.each do |submodule|%>
+  <%=submodule.name%>
+  <%=submodule.desc%>
+  <br>
+<%end%>
+</div>
+<div id="bugs">
+</div>
+<div id="team">
+</div>
+</div>
