@@ -13,10 +13,15 @@
 
   <div class="form-group">
     <%= f.label :content %><br>
-    <%= f.text_field :content,:class=>"form-control input-md" %>
+    <%= f.text_field :content,:class=>"form-control input-md",:id=>"desc" %>
   </div>
  <div class="actions">
    <input type="submit" class="btn btn-success" value="Save">
    <a href="/" class="btn btn-danger">Cancel</a>
   </div>
 <% end %>
+<script>
+$('document').ready(function(){
+    $('#desc').jqte()
+    })
+</script>
