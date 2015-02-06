@@ -4,8 +4,12 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
-    @projects = Project.all
-    respond_with(@projects)
+    if user_signed_in?
+        @projects = Project.all
+        respond_with(@projects)
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show
@@ -52,7 +56,11 @@ class ProjectsController < ApplicationController
   end
   private
   def set_project
+  if user_signed_in?
     @project = Project.find(params[:id])
+  else
+    redirect_to new_user_session_path
+  end
   end
 
   def project_params

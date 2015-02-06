@@ -4,8 +4,12 @@ class SubmodulesController < ApplicationController
   respond_to :html
 
   def index
+  if user_signed_in?
     @submodules = Submodule.all
     respond_with(@submodules)
+  else
+    redirect_to new_user_session_path
+  end
   end
 
   def show
@@ -58,7 +62,11 @@ class SubmodulesController < ApplicationController
   end
   private
     def set_submodule
+    if user_signed_in?
       @submodule = Submodule.find(params[:id])
+    else
+      redirect_to new_user_session_path
+    end
     end
 
     def submodule_params

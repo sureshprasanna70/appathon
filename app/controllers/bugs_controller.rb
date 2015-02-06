@@ -4,8 +4,12 @@ class BugsController < ApplicationController
   respond_to :html
 
   def index
+    if user_signed_in?
     @bugs = Bug.all
     respond_with(@bugs)
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show
@@ -50,7 +54,11 @@ class BugsController < ApplicationController
 
   private
   def set_bug
+  if user_signed_in?
     @bug = Bug.find(params[:id])
+  else
+    redirect_to new_user_session_path
+  end
   end
 
   def bug_params

@@ -4,8 +4,12 @@ class CommentsController < ApplicationController
   respond_to :html
 
   def index
+    if user_signed_in?
     @comments = Comment.all
     respond_with(@comments)
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show
@@ -44,7 +48,11 @@ class CommentsController < ApplicationController
 
   private
   def set_comment
+  if user_signed_in?
     @comment = Comment.find(params[:id])
+  else
+    redirect_to new_user_session_path
+  end
   end
 
   def comment_params
