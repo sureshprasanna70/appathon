@@ -1,6 +1,6 @@
 <div class="row">
 
-  <%= link_to 'New Iteration', new_project_path,:class=>"btn btn-primary pull-right" %>
+  <%= link_to 'New Iteration', new_project_path,:class=>"btn btn-primary pull-right",:remote=>"true" %>
 </div>
 <div class="row">
   <h1>Iterations</h1>
@@ -12,10 +12,11 @@
   <div class="row">
     <div class="module_name"><%= project.title %></div><br>
     <div  class="module_desc"><%= project.desc.html_safe %></div>
+    <div id="submodules"></div>
     <br>
-    <div class="col-md-4"><p><%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-info",:remote=>"true" %>
-    <%=link_to("User stories",project_modules_path(project.id),:class=>"btn btn-warning",:remote=>"true")%> 
-    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger",:remote=>"true" %></p></div>
+    <%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-info",:remote=>"true" %>    
+    <%=link_to "User stories",project_modules_path(project.id),:class=>"btn btn-warning",:remote=>"true"%><br><br> 
+    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"%>
   </div>
 <% end %>
   <% end %>

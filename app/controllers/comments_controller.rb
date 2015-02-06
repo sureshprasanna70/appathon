@@ -15,7 +15,10 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @@submodule_id=params[:id]
-    respond_with(@comment)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -40,11 +43,11 @@ class CommentsController < ApplicationController
   end
 
   private
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    def comment_params
-      params.require(:comment).permit(:content,:comment_owner,:submodule_id)
-    end
+  def comment_params
+    params.require(:comment).permit(:content,:comment_owner,:submodule_id)
+  end
 end

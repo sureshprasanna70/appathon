@@ -14,7 +14,10 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    respond_with(@project)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -38,13 +41,18 @@ class ProjectsController < ApplicationController
   def submodules
     @project_id=params[:id]
     @submodules=Submodule.where(:project_id=>params[:id])
-  end
-  private
-    def set_project
-      @project = Project.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
     end
 
-    def project_params
-      params.require(:project).permit(:title, :desc)
-    end
+  end
+  private
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def project_params
+    params.require(:project).permit(:title, :desc)
+  end
 end

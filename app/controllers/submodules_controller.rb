@@ -15,7 +15,11 @@ class SubmodulesController < ApplicationController
   def new
     @submodule = Submodule.new
     @@project_id=params[:id]
-    respond_with(@submodule)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   def edit
@@ -46,6 +50,11 @@ class SubmodulesController < ApplicationController
   def bug
     @submodule=Submodule.find(params[:id])
     @bugs=Bug.where(:submodule_id=>params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
   private
     def set_submodule

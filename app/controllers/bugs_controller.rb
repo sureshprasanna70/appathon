@@ -15,7 +15,11 @@ class BugsController < ApplicationController
   def new
     @bug = Bug.new
     @@submodule_id=params[:submodule_id]
-    respond_with(@bug)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   def edit
@@ -25,6 +29,7 @@ class BugsController < ApplicationController
     @bug = Bug.new(bug_params)
     @bug.submodule_id=@@submodule_id
     @bug.save
+  
     respond_with(@bug)
   end
 
