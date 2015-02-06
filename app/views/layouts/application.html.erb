@@ -49,8 +49,7 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
         <li class="pull-right">    <%if user_signed_in?%>
-<li><%= link_to "New Project", projects_path  %></li>
-        <li><%= link_to "Existing projects and teams", "/path2"  %></li>
+<li><%= link_to "Project", projects_path  %></li>
 
         <li class="link"><%= link_to('Logout', destroy_user_session_path, :method => :delete,:class=>"btn-danger") %></li>
       <%else%>
