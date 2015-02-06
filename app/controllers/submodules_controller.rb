@@ -14,7 +14,7 @@ class SubmodulesController < ApplicationController
 
   def new
     @submodule = Submodule.new
-    @project_id=params[:id]
+    @@project_id=params[:id]
     respond_with(@submodule)
   end
 
@@ -23,14 +23,20 @@ class SubmodulesController < ApplicationController
 
   def create
     @submodule = Submodule.new(submodule_params)
-    @submodule.project_id=@project_id
-    @submodule.save
-    respond_with(@submodule)
+    @submodule.project_id=@@project_id
+    if @submodule.save
+      redirect_to root_path
+    else
+      respond_with(@submodule)
+    end
   end
 
   def update
-    @submodule.update(submodule_params)
-    respond_with(@submodule)
+    if @submodule.update(submodule_params)
+      redirect_to root_path
+    else
+      respond_with(@submodule)
+    end
   end
 
   def destroy

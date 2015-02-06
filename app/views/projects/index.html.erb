@@ -1,8 +1,13 @@
 <div class="row">
 
-<%= link_to 'New Project', new_project_path,:class=>"btn btn-primary pull-right" %>
+  <%= link_to 'New Project', new_project_path,:class=>"btn btn-primary pull-right" %>
+</div>
+<div class="row">
   <h1>Projects</h1>
 </div>      
+<%if @projects.count==0%>
+  <div class="warn">No projects found</div>
+<%else%>
 <% @projects.each do |project| %>
   <div class="row">
     <div class="module_name"><%= project.title %></div><br>
@@ -13,3 +18,5 @@
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" %></p></div>
   </div>
 <% end %>
+  <% end %>
+</div>

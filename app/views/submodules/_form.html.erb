@@ -1,7 +1,7 @@
 <%= form_for(@submodule) do |f| %>
   <% if @submodule.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@submodule.errors.count, "error") %> prohibited this submodule from being saved:</h2>
+      <div class="alert alert-danger"><%= pluralize(@submodule.errors.count, "error") %> prohibited this submodule from being saved:
 
       <ul>
       <% @submodule.errors.full_messages.each do |message| %>
@@ -9,6 +9,7 @@
       <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
   <div class="col-md-6">
   <div class="form-group">
@@ -29,7 +30,7 @@
     <%= f.number_field :score,:class=>"form-control input-md" %>
   </div>
   <div class="actions">
-    <input type="submit" value="Save" class="btn btn-success"/>
+    <input type="submit" value="Save" class="btn btn-success">
     <a href="/" class="btn btn-danger">Cancel</a>
   </div>
 </div>
