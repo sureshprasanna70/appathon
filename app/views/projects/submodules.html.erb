@@ -1,16 +1,19 @@
+
+<%=link_to "New sub module",new_submodule_for_project_path(@project_id),:class=>"pull-right btn btn-primary"%>
 <%@submodules.each do |submodule|%>
-  <%=submodule.name%>
-  <%=submodule.desc%>
+  <p class="module_name"><%=submodule.name.titlecase%></p><br>
+  <p class="module_desc"><%=submodule.desc%></p><br>
   <br>
-  <b>Comments</b>
-  <br>
+  <div class="module_name">Thoughts</div>
+  <br><br>
   <%submodule.comments.each do |comment|%>
-    <%=comment.content%>
-    <%=comment.comment_owner%>
+    <div class="single_comments"> 
+      <div class="comment_user"><u><%=comment.comment_owner%></u> says </div>
+      <div class="comment_content"><%=comment.content%> </div>
+    </div>
     <br>
   <%end%>
   <br>
-  <%=link_to("Edit submodule",edit_submodule_path(submodule))%>
-  <%=link_to("New comment",new_comment_for_submodule_path(submodule.id))%>
+  <%=link_to("Edit submodule",edit_submodule_path(submodule),:class=>"btn btn-info")%>
+  <%=link_to("New comment",new_comment_for_submodule_path(submodule.id),:class=>"btn btn-success")%>
 <%end%>
-<%=link_to "New sub module",new_submodule_for_project_path(@project_id)%>

@@ -19,3 +19,27 @@
 .btn-danger{
   color:#fff;
 }
+.module_name{
+  font-size:25px;
+
+}
+.module_desc{
+  font-size:15px;
+  color:#777;
+  margin-left:5%;
+}
+.single_comments{
+  font-size:15px;
+  background-color:#777;
+  padding:5px 5px 5px 5px;
+  margin-left:5%;
+}
+.comment_user
+{
+  padding-left:1%;
+  color:#fff;
+}
+.comment_content{
+  margin-left:15%;
+  color:#fff;
+}

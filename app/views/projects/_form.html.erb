@@ -10,16 +10,19 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class="col-md-6">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title,:class=>"form-control input-md" %>
   </div>
   <div class="field">
     <%= f.label :desc %><br>
-    <%= f.text_area :desc %>
+    <%= f.text_area :desc,:class=>"form-control input-md"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+  <input type="submit" class="btn btn-success" value="Save" %>
+<a class="btn btn-danger"  href="/">Cancel</a>
+</div>
+</div>
 <% end %>
