@@ -25,6 +25,7 @@
   <%end%>
   <br>
   <%=link_to("Edit submodule",edit_submodule_path(submodule),:class=>"btn btn-info")%>
+ <%=link_to("Bugs",bugs_in_submodule_path(submodule.id),:class=>"btn btn-info")%>
   <%=link_to("New comment",new_comment_for_submodule_path(submodule.id),:class=>"btn btn-success")%>
 </div>
 <br>

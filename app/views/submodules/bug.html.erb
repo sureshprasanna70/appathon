@@ -1,0 +1,22 @@
+<div class="row">
+  <%=link_to("New bug",new_bug_for_submodule_path(@submodule.id),:class=>"btn btn-info pull-right")%>
+</div>
+<%if @bugs.count==0%>
+
+  <div class="row">
+    <p class="warn">No bugs for <%=@submodule.name%></p>
+  </div>
+<%else%>
+  <div class="row">
+    <div class="bug_name">Bugs for <%=@submodule.name%> </div>
+    <p>Read as <strong>"Bug name"</strong> with <strong>"Bug description"</strong> is assigned to <strong>"Bug person"</strong></p>
+
+  <%@bugs.each do |bug|%>
+    <div class="col-md-12">
+      <div class="bugs"><%=bug.name%> <i class="fa fa-chevron-right"></i>
+        <%=bug.desc%> <i class="fa fa-chevron-right"></i>
+<%=bug.assigned_to%></div>
+    </div>
+  <%end%>
+</div>
+<%end%>

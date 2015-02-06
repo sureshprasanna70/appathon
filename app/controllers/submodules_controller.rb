@@ -43,7 +43,10 @@ class SubmodulesController < ApplicationController
     @submodule.destroy
     respond_with(@submodule)
   end
-
+  def bug
+    @submodule=Submodule.find(params[:id])
+    @bugs=Bug.where(:submodule_id=>params[:id])
+  end
   private
     def set_submodule
       @submodule = Submodule.find(params[:id])
