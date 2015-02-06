@@ -35,7 +35,10 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_with(@project)
   end
-
+  def submodules
+    @project_id=params[:id]
+    @submodules=Submodule.where(:project_id=>params[:id])
+  end
   private
     def set_project
       @project = Project.find(params[:id])

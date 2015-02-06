@@ -1,0 +1,5 @@
+<%@submodules.each do |submodule|%>
+  <%=submodule.name%>
+  <%=submodule.desc%>
+<%end%>
+<%=link_to "New sub module",new_submodule_for_project_path(@project_id)%>

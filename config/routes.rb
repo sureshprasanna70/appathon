@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  resources :submodules
+
   resources :employees
 
   resources :projects
 
   devise_for :users
   root 'home#index'
-
+  get 'projects/:id/submodules/'=>"projects#submodules",:as=>"project_modules"
+  get 'submodules/projects/:id'=>"submodules#new",:as=>"new_submodule_for_project"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

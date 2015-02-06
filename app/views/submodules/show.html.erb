@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @submodule.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @submodule.desc %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @submodule.deadline %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @submodule.score %>
+</p>
+
+<%= link_to 'Edit', edit_submodule_path(@submodule) %> |
+<%= link_to 'Back', submodules_path %>

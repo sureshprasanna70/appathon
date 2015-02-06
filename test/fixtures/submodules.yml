@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  desc: MyText
+  deadline: 2015-02-06 19:24:01
+  score: 1
+
+two:
+  name: MyText
+  desc: MyText
+  deadline: 2015-02-06 19:24:01
+  score: 1
