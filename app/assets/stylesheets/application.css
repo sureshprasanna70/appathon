@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.navbar-default .navbar-nav > li > a{
+  color:#000;
+}
+.btn-danger{
+  color:#fff;
+}

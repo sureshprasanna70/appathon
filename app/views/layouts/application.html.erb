@@ -48,13 +48,13 @@
     <a class="navbar-brand" href="#">Appathon</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Link1", "/path1"  %></li>
-        <li><%= link_to "Link2", "/path2"  %></li>
-        <li><%= link_to "Link3", "/path3"  %></li>
         <li class="pull-right">    <%if user_signed_in?%>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<li><%= link_to "New Project", projects_path  %></li>
+        <li><%= link_to "Existing projects and teams", "/path2"  %></li>
+
+        <li class="link"><%= link_to('Logout', destroy_user_session_path, :method => :delete,:class=>"btn-danger") %></li>
       <%else%>
-        <%=link_to("Login",new_user_session_path)%>
+        <li><%=link_to("Login",new_user_session_path)%></li>
       <%end%>
       </li>
 
