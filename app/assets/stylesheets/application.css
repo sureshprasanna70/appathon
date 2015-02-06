@@ -25,7 +25,7 @@
 }
 .module_desc{
   font-size:15px;
-  color:#777;
+  color:#fff;
   margin-left:5%;
 }
 .single_comments{
@@ -64,4 +64,11 @@
 }
 .worker{
   color:#000;
+}
+.deadline{
+  font-size:10px;
+  padding:5px 
+}
+.red{
+  background-color:#E82C0C;
 }

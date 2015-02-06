@@ -6,15 +6,19 @@
 <%if @submodules.count==0%>
   <div class="warn">No submodules found</div>
 <%else%>
-<%@submodules.each do |submodule|%>
-  <div class="modules">
-  <p class="module_name"><%=submodule.name.titlecase%></p><br>
-  <p class="module_desc"><%=submodule.desc%></p><br>
+  <%@submodules.each do |submodule|%>
+    <% if submodule.deadline < Date.today%>
+      <div class="red modules">
+      <%else%>
+        <div class="modules">
+      <%end%>
+    <div class="module_name"><%=submodule.name.titlecase%><div class="deadline"><%=submodule.deadline%></div></div><br>
+  <div class="module_desc"><%=submodule.desc%></div><br>
   <br>
   <div class="module_name">Thoughts</div>
   <br><br>
   <%if submodule.comments.count==0%>
-    <p class="text-center">No thoughts</p>
+    <div class="text-center">No thoughts</div>
   <%end%>
   <%submodule.comments.each do |comment|%>
     <div class="single_comments"> 
@@ -27,12 +31,11 @@
   <%end%>
   <br>
   <%=link_to("Edit submodule",edit_submodule_path(submodule),:class=>"btn btn-info",:remote=>true)%>
-  <%=link_to("Bugs",bugs_in_submodule_path(submodule.id),:class=>"btn btn-info",:remote=>true)%>
+  <%=link_to(submodule.bugs.count.to_s+" Bugs",bugs_in_submodule_path(submodule.id),:class=>"btn btn-info",:remote=>true)%>
   <%=link_to("New comment",new_comment_for_submodule_path(submodule.id),:class=>"btn btn-success",:remote=>"true")%>
 </div>
 <br>
 <br>
-
 <br>
 <%end%>
 <%end%>

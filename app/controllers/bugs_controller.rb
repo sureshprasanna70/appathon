@@ -28,14 +28,19 @@ class BugsController < ApplicationController
   def create
     @bug = Bug.new(bug_params)
     @bug.submodule_id=@@submodule_id
-    @bug.save
-  
-    respond_with(@bug)
+    if @bug.save
+      redirect_to root_path
+    else
+      respond_with(@bug)
+    end
   end
 
   def update
-    @bug.update(bug_params)
-    respond_with(@bug)
+    if @bug.update(bug_params)
+      redirect_to root_path
+    else
+      respond_with(@bug)
+    end
   end
 
   def destroy
@@ -44,11 +49,11 @@ class BugsController < ApplicationController
   end
 
   private
-    def set_bug
-      @bug = Bug.find(params[:id])
-    end
+  def set_bug
+    @bug = Bug.find(params[:id])
+  end
 
-    def bug_params
-      params.require(:bug).permit(:name, :desc, :assigned_to,:submodule_id)
-    end
+  def bug_params
+    params.require(:bug).permit(:name, :desc, :assigned_to,:submodule_id,:status)
+  end
 end
