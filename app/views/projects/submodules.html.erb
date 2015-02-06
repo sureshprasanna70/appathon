@@ -1,5 +1,16 @@
 <%@submodules.each do |submodule|%>
   <%=submodule.name%>
   <%=submodule.desc%>
+  <br>
+  <b>Comments</b>
+  <br>
+  <%submodule.comments.each do |comment|%>
+    <%=comment.content%>
+    <%=comment.comment_owner%>
+    <br>
+  <%end%>
+  <br>
+  <%=link_to("Edit submodule",edit_submodule_path(submodule))%>
+  <%=link_to("New comment",new_comment_for_submodule_path(submodule.id))%>
 <%end%>
 <%=link_to "New sub module",new_submodule_for_project_path(@project_id)%>

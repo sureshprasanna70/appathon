@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+
   resources :submodules
 
   resources :employees
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'projects/:id/submodules/'=>"projects#submodules",:as=>"project_modules"
   get 'submodules/projects/:id'=>"submodules#new",:as=>"new_submodule_for_project"
-  
+  get 'comments/new/:id'=>"comments#new",:as=>"new_comment_for_submodule"  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
