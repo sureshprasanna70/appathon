@@ -29,7 +29,7 @@ body{
 }
 .module_desc{
   font-size:15px;
-  color:#000;
+  color:#fff;
   margin-left:5%;
 }
 .single_comments{
@@ -77,5 +77,8 @@ body{
   background-color:#FF530D;
 }
 .login{
-  margin-left:65%;
-}
+  margin-left:10%;
+ }
+ .name{
+   font-size:25px;
+ }

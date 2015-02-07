@@ -14,3 +14,4 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'rolify'
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
+gem 'gravatar_image_tag'

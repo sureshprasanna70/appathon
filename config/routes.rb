@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root 'projects#index'
   get 'projects/:id/submodules/'=>"projects#submodules",:as=>"project_modules"
   get 'team/projects/:id'=>"projects#team",:as=>"project_team"
+  get 'team/:id'=>"projects#fullteam",:as=>"full_team"
   post 'team/add'=>"projects#add_to_team"
   get 'submodules/projects/:id'=>"submodules#new",:as=>"new_submodule_for_project"
   get 'comments/new/:id'=>"comments#new",:as=>"new_comment_for_submodule"  

@@ -59,15 +59,21 @@ class ProjectsController < ApplicationController
   def team
     @@project_id=params[:id]
   end
+  def fullteam
+    puts params[:id]
+    @users=User.with_role params[:id]
+  end
   def add_to_team()
-    puts params
-    teammate=User.where(:email=>params[:member]).first
-    project=Project.find(@@project_id)
+    teammate=User.where(:email=>params[:project][:member]).first
+    @project=Project.find(@@project_id)
     if teammate==nil
       flash[:alert]="User not found"
+      redirect_to root_path
     else
-      teammate.add_role project.id
+      puts @project.id
+      teammate.add_role @project.id.to_s
       flash[:notice]="User added"
+      redirect_to root_path
     end
   end
   private

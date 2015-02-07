@@ -1,23 +1,18 @@
 
-</div>
-<h1>Listing hooks</h1>
-
-<%= link_to 'New Hook', new_hook_path %>
-<table class="table">
-  <tr>
-    <td>Name</td>
-    <td>Url to call</td>
-    <td>Purpose</td>
-    <td>Action</td>
-  </tr>
-  <% @hooks.each do |hook| %>
-    <tr>
-      <td><%= hook.name %></td>
-      <td><%="request/"+hook.purpose+"/"+hook.submodule_id.to_s+"/"+hook.token%></td>
-      <td><%=hook.purpose%></td>    
-      <td><%= link_to 'Destroy', hook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+<%= link_to new_hook_path ,:class=>"btn btn-primary pull-right" do%>
+  <i class="fa fa-plus"></i>  New Hook
+<%end%>
+<h1>Hooks</h1>
+<div class="row">
+    <% @hooks.each do |hook| %>
+    <div class="col-md-12">
+      <div class="col-md-4"><div class="name"><%= hook.name %></div> <br>
+        <b>URL</b> <%="request/"+hook.purpose+"/"+hook.submodule_id.to_s+"/"+hook.token%><br>
+      <%= link_to 'Destroy', hook, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+    <br>
     <% end %>
 
 <br>
-
+</div>
+</div>

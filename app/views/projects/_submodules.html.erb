@@ -15,7 +15,7 @@
         <div class="modules">
       <%end%>
     <div class="module_name"><%=submodule.name.titlecase%><div class="deadline"><%=submodule.deadline%></div></div>
-  <div class="module_desc"><%=submodule.desc%></div>
+  <div class="module_desc"><%=submodule.desc.html_safe%></div>
   <br>
   <div class="module_name">Thoughts</div>
   <br><br>

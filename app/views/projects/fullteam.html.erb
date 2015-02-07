@@ -1,0 +1,4 @@
+<h2>Team Members</h2>
+<%@users.each do |user|%>
+  <%=gravatar_image_tag(user.email,:class=>"img-circle profile-img")%>  <%=user.email%>
+<%end%>
