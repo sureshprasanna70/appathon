@@ -13,9 +13,6 @@
  *= require_tree .
  *= require_self
  */
-.navbar-default .navbar-nav > li > a{
-  color:#000;
-}
 .btn-danger{
   color:#fff;
 }
@@ -23,9 +20,16 @@
   font-size:25px;
 
 }
+body{
+  background-image:url('/assets/bg.gif');
+  font-family: 'Roboto', sans-serif;
+}
+.padder{
+  padding:15%;
+}
 .module_desc{
   font-size:15px;
-  color:#fff;
+  color:#000;
   margin-left:5%;
 }
 .single_comments{

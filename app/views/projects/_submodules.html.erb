@@ -1,5 +1,7 @@
 <div class="row">
-  <%=link_to "New user story",new_submodule_for_project_path(@project_id),:class=>"pull-right btn btn-primary",:remote=>"true"%>
+  <%=link_to new_submodule_for_project_path(@project_id),:class=>"pull-right btn btn-primary",:remote=>"true" do%>
+   <i class="fa fa-plus-circle"></i> New user story
+  <%end%>
 </div>
 <br>
 <div class="row">
@@ -29,9 +31,15 @@
     <br>
   <%end%>
   <br>
-  <%=link_to("Edit submodule",edit_submodule_path(submodule),:class=>"btn btn-info",:remote=>true)%>
-  <%=link_to(submodule.bugs.count.to_s+" Bugs",bugs_in_submodule_path(submodule.id),:class=>"btn btn-info",:remote=>true)%>
-  <%=link_to("New comment",new_comment_for_submodule_path(submodule.id),:class=>"btn btn-success",:remote=>"true")%>
+  <%=link_to edit_submodule_path(submodule),:class=>"btn btn-info",:remote=>true  do%>
+   <i class="fa fa-edit"></i> Edit Story
+  <%end%>
+  <%=link_to bugs_in_submodule_path(submodule.id),:class=>"btn btn-info",:remote=>true do%>
+  <i class="fa fa-bug"></i> <%=submodule.bugs.count.to_s+" Bugs"%>
+  <%end%>
+  <%=link_to new_comment_for_submodule_path(submodule.id),:class=>"btn btn-success",:remote=>"true" do%>
+   <i class="fa fa-comments"></i> New comment
+  <%end%>
 
   <div id="bugs"></div>
 </div>

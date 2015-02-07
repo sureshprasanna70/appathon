@@ -19,9 +19,11 @@
        <%= f.text_area :desc,:class=>"form-control input-md",:id=>"desc"%>
        </div>
        <div class="actions">
-       <br>
-       <input type="submit" class="btn btn-success" value="Save" %>
-     <a class="btn btn-danger"  href="/">Cancel</a>
+         <br>
+         <button type="submit" class="btn btn-success">
+             <i class="fa fa-save"></i> Save
+           </button>
+           <a class="btn btn-danger"  href="/"><i class="fa fa-trash-o"></i> Cancel</a>
  </div>
 <% end %>
 <script>

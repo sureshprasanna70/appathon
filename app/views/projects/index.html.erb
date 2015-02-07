@@ -1,6 +1,8 @@
 <div class="row">
 
-  <%= link_to 'New Iteration', new_project_path,:class=>"btn btn-primary pull-right",:remote=>"true" %>
+  <%= link_to new_project_path,:class=>"btn btn-primary pull-right",:remote=>"true" do%>
+    <i class="fa fa-plus-circle"></i>  New Iteration
+  <%end%>
 </div>
 <div class="row">
   <h1>Iterations</h1>
@@ -13,9 +15,15 @@
     <div class="module_name"><%= project.title %></div><br>
     <div  class="module_desc"><%= project.desc.html_safe %></div>
     <br>
-    <%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-info",:remote=>"true" %>   
-    <%=link_to project.submodules.count.to_s+" User stories",project_modules_path(project.id),:class=>"btn btn-warning",:remote=>"true"%><br><br> 
-    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"%>
+    <%= link_to edit_project_path(project),:class=>"btn btn-info",:remote=>"true"  do%>
+      <i class="fa fa-edit"></i> Edit
+    <%end%>   
+    <%=link_to  project_modules_path(project.id),:class=>"btn btn-warning",:remote=>"true" do%>
+             <i class="fa fa-book"></i> <%=project.submodules.count.to_s+" User stories"%>
+    <%end%>
+    <%= link_to  project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" do%>
+      <i class="fa fa-trash-o"></i> Destroy
+    <%end%>
 
     <div id="submodules"></div>
   </div>

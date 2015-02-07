@@ -17,8 +17,10 @@
     <%= f.text_field :content,:class=>"form-control input-md",:id=>"desc" %>
   </div>
  <div class="actions">
-   <input type="submit" class="btn btn-success" value="Save">
-   <a href="/" class="btn btn-danger">Cancel</a>
+   <button type="submit" class="btn btn-success">
+       <i class="fa fa-save"></i> Save
+     </button>
+     <a href="/" class="btn btn-danger"><i class="fa fa-trash-o"></i> Cancel</a>
   </div>
 <% end %>
 <script>

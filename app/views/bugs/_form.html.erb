@@ -23,7 +23,9 @@
       <%=f.select(:status,options_for_select(["Open","Close","Working","On hold"]))%>
   </div>
   <div class="actions">
-    <input type="submit" value="Save" class="btn btn-success">
-    <a href="/" class="btn btn-danger">Cancel</a>`
+    <button type="submit" class="btn btn-success">
+        <i class="fa fa-save"></i> Save
+      </button>
+      <a href="/" class="btn btn-danger"><i class="fa fa-trash-o"></i> Cancel</a>`
   </div>
 <% end %>

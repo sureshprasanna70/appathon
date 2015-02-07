@@ -29,13 +29,19 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.save
-    respond_with(@project)
+    if @project.save
+      redirect_to root_path
+    else
+      respond_with(@project)
+    end
   end
 
   def update
-    @project.update(project_params)
+    if @project.update(project_params)
+      redirect_to root_path
+    else
     respond_with(@project)
+    end
   end
 
   def destroy
@@ -52,14 +58,10 @@ class ProjectsController < ApplicationController
   end
   def team
     @@project_id=params[:id]
-    puts "teaml"
-    puts @@project_id
   end
   def add_to_team()
     puts params
     teammate=User.where(:email=>params[:member]).first
-    puts "Add"
-    puts @@project_id
     project=Project.find(@@project_id)
     if teammate==nil
       flash[:alert]="User not found"

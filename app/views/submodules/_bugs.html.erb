@@ -1,6 +1,8 @@
 <br>
 <div class="row">
-  <%=link_to("New bug",new_bug_for_submodule_path(@submodule.id),:class=>"btn btn-info pull-right",:remote=>true)%>
+  <%=link_to new_bug_for_submodule_path(@submodule.id),:class=>"btn btn-info pull-right",:remote=>true do%>
+    <i class="fa fa-plus-circle"></i> New bug
+    <%end%>
 </div>
 <%if @bugs.count==0%>
 
@@ -8,7 +10,7 @@
     <p class="warn">No bugs for <%=@submodule.name%></p>
   </div>
 <%else%>
-  <div class="bug_name">Bugs for <%=@submodule.name%> </div>
+  <div class="bug_name"> <i class="fa fa-list"></i> Bugs for <%=@submodule.name%> </div>
   <p>Read as <strong>"Bug name"</strong> with <strong>"Bug description"</strong> is assigned to <strong>"Bug person"</strong>and the status <strong>Bug status</strong></p>
 
   <%@bugs.each do |bug|%>
@@ -25,7 +27,11 @@
             <%=bug.name%> <i class="fa fa-chevron-right"></i>
             <%=bug.desc%> <i class="fa fa-chevron-right"></i>
             <%=bug.assigned_to%> <i class="fa fa-chevron-right"></i>
-            <%=bug.status%>
+            <%=bug.status%>  
+            <%=link_to edit_bug_path(bug),:remote=>"true",:class=>"btn btn-primary" do%>
+              <i class="fa fa-edit"></i> Edit
+          <%end%>
+
           </div>
 
         <%end%>
