@@ -20,7 +20,10 @@
     <%end%>   
     <%=link_to  project_modules_path(project.id),:class=>"btn btn-warning",:remote=>"true" do%>
              <i class="fa fa-book"></i> <%=project.submodules.count.to_s+" User stories"%>
-    <%end%>
+         <%end%>
+         <%=link_to full_team_path(project.id),:class=>"btn btn-primary" do%>
+           <i class="fa fa-user"></i> Team
+         <%end%> 
     <%= link_to  project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" do%>
       <i class="fa fa-trash-o"></i> Destroy
     <%end%>
