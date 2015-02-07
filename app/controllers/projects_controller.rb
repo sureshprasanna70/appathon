@@ -42,9 +42,6 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_with(@project)
   end
-  def complete
-
-  end
   def submodules
     @project_id=params[:id]
     @submodules=Submodule.where(:project_id=>params[:id])
@@ -52,7 +49,24 @@ class ProjectsController < ApplicationController
       format.html
       format.js
     end
-
+  end
+  def team
+    @@project_id=params[:id]
+    puts "teaml"
+    puts @@project_id
+  end
+  def add_to_team()
+    puts params
+    teammate=User.where(:email=>params[:member]).first
+    puts "Add"
+    puts @@project_id
+    project=Project.find(@@project_id)
+    if teammate==nil
+      flash[:alert]="User not found"
+    else
+      teammate.add_role project.id
+      flash[:notice]="User added"
+    end
   end
   private
   def set_project
