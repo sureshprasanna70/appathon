@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy,:complete]
-
+  after_action :send_mail,only:[:update]
   respond_to :html
 
   def index
@@ -64,6 +64,7 @@ class ProjectsController < ApplicationController
     @users=User.with_role params[:id]
   end
   def add_to_team()
+  if user_signed_in? and user.has_role? "super"
     teammate=User.where(:email=>params[:project][:member]).first
     @project=Project.find(@@project_id)
     if teammate==nil
@@ -75,6 +76,14 @@ class ProjectsController < ApplicationController
       flash[:notice]="User added"
       redirect_to root_path
     end
+  else
+    flash[:alert]="Watch your step"
+    redirect_to root_path
+  end 
+
+  end
+  def send_mail()
+    UpdateNotifier.send_update(@project).deliver
   end
   private
   def set_project

@@ -70,6 +70,6 @@ class SubmodulesController < ApplicationController
     end
 
     def submodule_params
-      params.require(:submodule).permit(:name, :desc, :deadline, :score,:project_id)
+      params.require(:submodule).permit(:name, :desc, :deadline, :score,:project_id,:close)
     end
 end

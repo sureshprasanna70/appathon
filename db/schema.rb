@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207012241) do
+ActiveRecord::Schema.define(version: 20150207055959) do
 
   create_table "bugs", force: true do |t|
     t.text     "name"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150207012241) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
+    t.boolean  "close"
   end
 
   create_table "users", force: true do |t|

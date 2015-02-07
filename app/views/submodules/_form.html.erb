@@ -28,7 +28,10 @@
     <%= f.label :score %><br>
     <%= f.number_field :score,:class=>"form-control input-md" %>
   </div>
-  <div class="actions">
+    <div class="field">
+    Close <%= f.check_box :close %>
+  </div>
+<div class="actions">
     <input type="submit" value="Save" class="btn btn-success">
     <a href="/" class="btn btn-danger">Cancel</a>
   </div>

@@ -9,7 +9,7 @@
   <div class="warn">No submodules found</div>
 <%else%>
   <%@submodules.each do |submodule|%>
-    <% if submodule.deadline < Date.today%>
+    <% if submodule.deadline < Date.today  or submodule.close==true%>
       <div class="red modules">
       <%else%>
         <div class="modules">
@@ -24,7 +24,7 @@
   <%end%>
   <%submodule.comments.each do |comment|%>
     <div class="single_comments"> 
-      <div class="comment_user"><u><%=comment.comment_owner%></u> says </div>
+      <div class="comment_user"><u><%=gravatar_image_tag(comment.comment_owner,:class=>"img-circle profile-img",:size=>8)%><%=comment.comment_owner%></u> says </div>
       <div class="comment_content"><%=comment.content%></div>
     </div>
 
