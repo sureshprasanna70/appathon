@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206211600) do
+ActiveRecord::Schema.define(version: 20150207004004) do
 
   create_table "bugs", force: true do |t|
     t.text     "name"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20150206211600) do
     t.datetime "updated_at"
     t.text     "email"
     t.text     "position"
+  end
+
+  create_table "hooks", force: true do |t|
+    t.string   "name"
+    t.string   "token"
+    t.string   "purpose"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "submodule_id"
   end
 
   create_table "projects", force: true do |t|

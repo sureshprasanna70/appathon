@@ -4,8 +4,12 @@ class HooksController < ApplicationController
   respond_to :html
 
   def index
+    if user_signed_in?
     @hooks = Hook.all
     respond_with(@hooks)
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show
@@ -13,8 +17,14 @@ class HooksController < ApplicationController
   end
 
   def new
-    @hook = Hook.new
-    respond_with(@hook)
+    if user_signed_in?
+      @hook = Hook.new
+      @hook.token=Digest::SHA1.hexdigest ("#{Time.now}")
+      puts Hash.new(Time.now)
+      respond_with(@hook)
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def edit
@@ -38,10 +48,14 @@ class HooksController < ApplicationController
 
   private
     def set_hook
-      @hook = Hook.find(params[:id])
+      if user_signed_in?
+        @hook = Hook.find(params[:id])
+      else
+        redirect_to new_user_session_path
+      end
     end
 
     def hook_params
-      params.require(:hook).permit(:name, :token, :purpose)
+      params.require(:hook).permit(:name, :token, :purpose,:submodule_id)
     end
 end

@@ -1,29 +1,23 @@
+
+</div>
 <h1>Listing hooks</h1>
 
-<table>
-  <thead>
+<%= link_to 'New Hook', new_hook_path %>
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Url to call</td>
+    <td>Purpose</td>
+    <td>Action</td>
+  </tr>
+  <% @hooks.each do |hook| %>
     <tr>
-      <th>Name</th>
-      <th>Token</th>
-      <th>Purpose</th>
-      <th colspan="3"></th>
+      <td><%= hook.name %></td>
+      <td><%="request/"+hook.purpose+"/"+hook.submodule_id.to_s+"/"+hook.token%></td>
+      <td><%=hook.purpose%></td>    
+      <td><%= link_to 'Destroy', hook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @hooks.each do |hook| %>
-      <tr>
-        <td><%= hook.name %></td>
-        <td><%= hook.token %></td>
-        <td><%= hook.purpose %></td>
-        <td><%= link_to 'Show', hook %></td>
-        <td><%= link_to 'Edit', edit_hook_path(hook) %></td>
-        <td><%= link_to 'Destroy', hook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 
-<%= link_to 'New Hook', new_hook_path %>

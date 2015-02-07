@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get 'submodules/bug/:id'=>"submodules#bug",:as=>"bugs_in_submodule"
   get 'bugs/new/:submodule_id'=>"bugs#new",:as=>"new_bug_for_submodule"
   get 'projects/complete/:id'=>"projects#complete",:as=>"complete_story"
+  put 'request/bugs/:submodule_id/:bug_token'=>"bugs#make_bug"
 end
