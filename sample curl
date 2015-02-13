@@ -1,0 +1,19 @@
+
+curl -XPUT  -H 'Content-Type: application/json' -H "X-Github-Event: issues" -d '{"action": "opened",
+    "issue": {
+        "url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
+        "number": 1347,"state":"open","title":"Hello boyzzz","assignee":"manager","body":"So be it"
+    },
+    "repository": {
+        "id": 1296269,
+        "full_name": "octocat/Hello-World",
+        "owner": {
+            "login": "octocat",
+            "id": 1
+        }
+    },
+    "sender": {
+        "login": "octocat",
+        "id": 1
+    }
+}'  http://localhost:3000/request/bugs/14/204cf9921c7402a9160f4990f83d01ce1b17c7a6

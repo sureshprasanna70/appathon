@@ -25,7 +25,7 @@
   <%submodule.comments.each do |comment|%>
     <div class="single_comments"> 
       <div class="comment_user"><u><%=gravatar_image_tag(comment.comment_owner,:class=>"img-circle profile-img",:size=>8)%><%=comment.comment_owner%></u> says </div>
-      <div class="comment_content"><%=comment.content%></div>
+      <div class="comment_content"><%=comment.content.html_safe%></div>
     </div>
 
     <br>

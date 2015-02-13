@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  after_action :send_mail,only:[:create]
   respond_to :html
 
   def index
@@ -32,20 +32,29 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.comment_owner=current_user.email
     @comment.submodule_id=@@submodule_id  #params[:id]
-    @comment.save
-    respond_with(@comment)
+    if @comment.save
+      redirect_to root_path
+    else
+      respond_with(@comment)
+    end
   end
 
   def update
-    @comment.update(comment_params)
-    respond_with(@comment)
+    if @comment.update(comment_params)
+      redirect_to root_path
+    else
+      respond_with(@comment)
+    end
   end
 
   def destroy
     @comment.destroy
     respond_with(@comment)
   end
-
+  def send_mail
+      @sub=Submodule.find(@@submodule_id)
+      UpdateNotifier.send_comment_update(@sub).deliver
+  end
   private
   def set_comment
   if user_signed_in?

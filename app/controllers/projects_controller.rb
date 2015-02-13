@@ -5,8 +5,8 @@ class ProjectsController < ApplicationController
 
   def index
     if user_signed_in?
-        @projects = Project.all
-        respond_with(@projects)
+      @projects = Project.all
+      respond_with(@projects)
     else
       redirect_to new_user_session_path
     end
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to root_path
     else
-    respond_with(@project)
+      respond_with(@project)
     end
   end
 
@@ -63,23 +63,22 @@ class ProjectsController < ApplicationController
     puts params[:id]
     @users=User.with_role params[:id]
   end
-  def add_to_team()
-  if user_signed_in? and user.has_role? "super"
-    teammate=User.where(:email=>params[:project][:member]).first
-    @project=Project.find(@@project_id)
-    if teammate==nil
-      flash[:alert]="User not found"
-      redirect_to root_path
+  def add_to_team
+    if user_signed_in? and current_user.has_role?"admin"
+      teammate=User.where(:email=>params[:project][:member]).first
+      @project=Project.find(@@project_id)
+      if teammate==nil
+        flash[:alert]="User not found"
+        redirect_to root_path
+      else
+        teammate.add_role @project.id.to_s
+        flash[:notice]="User added"
+        redirect_to root_path
+      end
     else
-      puts @project.id
-      teammate.add_role @project.id.to_s
-      flash[:notice]="User added"
+      flash[:alert]="Watch your step"
       redirect_to root_path
-    end
-  else
-    flash[:alert]="Watch your step"
-    redirect_to root_path
-  end 
+    end 
 
   end
   def send_mail()
@@ -87,11 +86,11 @@ class ProjectsController < ApplicationController
   end
   private
   def set_project
-  if user_signed_in?
-    @project = Project.find(params[:id])
-  else
-    redirect_to new_user_session_path
-  end
+    if user_signed_in?
+      @project = Project.find(params[:id])
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def project_params
